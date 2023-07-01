@@ -17,7 +17,7 @@ export const RecipeDetail = () => {
           <h1>{findRecipe.cuisineName}</h1>
           <div>
             <div className="recipe-image-container">
-              <img src={findRecipe.recipeImage} alt="image" />
+              <img src={findRecipe.recipeImage} alt="recipe" />
             </div>
             <div>
               <p>Cuisine: {findRecipe.cuisineName}</p>
