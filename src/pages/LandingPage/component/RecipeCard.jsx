@@ -6,10 +6,10 @@ export const RecipeCard = ({ recipe, dispatch }) => {
   return (
     <div className="recipe-card">
       <div className="action-item">
-        <BsPencil
+        <BsPencil style={{cursor:"pointer"}}
           onClick={() => dispatch({ type: "SET_EDIT", payload: recipe })}
         />
-        <BsTrash
+        <BsTrash style={{cursor:"pointer"}}
           onClick={() => dispatch({ type: "SET_DELETE", payload: recipe.id })}
         />
       </div>

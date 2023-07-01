@@ -7,11 +7,12 @@ export const EditModal = ({ editModal }) => {
 
   const [image, setImage] = useState(null);
   const [postData, setPostData] = useState({
-    id:editModal.recipe.id,
+    id: editModal.recipe.id,
     cuisineName: editModal.recipe.cuisineName,
     cuisineType: editModal.recipe.cuisineType,
     ingredients: editModal.recipe.ingredients,
     instructions: editModal.recipe.instructions,
+    recipeImage: editModal.recipe?.recipeImage,
   });
 
   const handleInputChange = (type, value) =>
@@ -73,9 +74,12 @@ export const EditModal = ({ editModal }) => {
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
         />
-        {image && (
+        {(image || postData.recipeImage) && (
           <div className="new-image">
-            <img src={URL.createObjectURL(image)} alt="post" />
+            <img
+              src={image ? URL.createObjectURL(image) : postData.recipeImage}
+              alt="post"
+            />
           </div>
         )}
         <div>

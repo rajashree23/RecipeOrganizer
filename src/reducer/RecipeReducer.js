@@ -36,7 +36,7 @@ export const RecipeReducer = (state, action) => {
       };
     case "SET_RECIPIES": {
       let findRecipe = state.recipies.findIndex(
-        (recipe) => recipe.id.to === action.payload.id
+        (recipe) => recipe.id === action.payload.id
       );
       let finalRecipe = [];
       if (findRecipe === -1) {
