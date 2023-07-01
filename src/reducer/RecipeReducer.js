@@ -4,6 +4,10 @@ export const initialState = {
   recipies: [],
   filterBy: "",
   inputText: "",
+  editModal: {
+    show: false,
+    recipe: null,
+  },
 };
 
 export const RecipeReducer = (state, action) => {
@@ -38,6 +42,14 @@ export const RecipeReducer = (state, action) => {
         recipies: finalRecipe,
       };
     }
+    case "SET_EDIT":
+      return {
+        ...state,
+        editModal: {
+          show: !state.editModal.show,
+          recipe: action.payload,
+        },
+      };
     case "SET_DELETE": {
       let finalRecipe = state.recipies.filter(
         (item) => item.id !== action.payload

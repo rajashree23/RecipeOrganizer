@@ -6,7 +6,9 @@ export const RecipeCard = ({ recipe, dispatch }) => {
   return (
     <div className="recipe-card">
       <div className="action-item">
-        <BsPencil />
+        <BsPencil
+          onClick={() => dispatch({ type: "SET_EDIT", payload: recipe })}
+        />
         <BsTrash
           onClick={() => dispatch({ type: "SET_DELETE", payload: recipe.id })}
         />

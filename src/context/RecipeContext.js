@@ -12,13 +12,14 @@ export const RecipeContextProvider = ({ children }) => {
       payload: localStorage.getItem("recipies") || recipies,
     },);
   },[]);
-  
+
   return (
     <RecipeContext.Provider
       value={{
         recipies: state.recipies,
         filterBy: state.filterBy,
         inputText: state.inputText,
+        editModal:state.editModal,
         dispatch: dispatch,
       }}
     >

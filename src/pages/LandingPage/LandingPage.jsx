@@ -9,9 +9,10 @@ import "./landing.desktop.layout.css";
 import { useState } from "react";
 import { AddNewRecipe } from "./component/AddNewRecipe";
 import { getFilteredRecipes } from "../../utils";
+import { EditModal } from "./component/EditModal";
 
 export const LandingPage = () => {
-  const { recipies, dispatch, filterBy,inputText} = useRecipeContext();
+  const { recipies, dispatch, filterBy,inputText,editModal} = useRecipeContext();
   const [showAddNew, setShowAddNew] = useState(false);
 
   const filteredRecipes=getFilteredRecipes(inputText,filterBy,recipies);
@@ -28,7 +29,7 @@ export const LandingPage = () => {
         <h2>All Recipes</h2>
         <div className="recipe-container">
           {filteredRecipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} dispatch={dispatch} />
+            <RecipeCard key={recipe.id} recipe={recipe} dispatch={dispatch}  />
           ))}
           <div
             className="add-new"
@@ -39,6 +40,7 @@ export const LandingPage = () => {
         </div>
       </div>
       {showAddNew && <AddNewRecipe setShowAddNew={setShowAddNew} />}
+      {editModal.show && <EditModal editModal={editModal}/>}
     </div>
   );
 };
