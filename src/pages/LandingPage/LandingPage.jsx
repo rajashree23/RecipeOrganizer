@@ -12,10 +12,11 @@ import { getFilteredRecipes } from "../../utils";
 import { EditModal } from "./component/EditModal";
 
 export const LandingPage = () => {
-  const { recipies, dispatch, filterBy,inputText,editModal} = useRecipeContext();
-  const [showAddNew, setShowAddNew] = useState(false);
+  const { recipies, dispatch, filterBy, inputText, editModal } =
+    useRecipeContext();
 
-  const filteredRecipes=getFilteredRecipes(inputText,filterBy,recipies);
+  const [showAddNew, setShowAddNew] = useState(false);
+  const filteredRecipes = getFilteredRecipes(inputText, filterBy, recipies);
 
   return (
     <div className="landing-container">
@@ -29,7 +30,7 @@ export const LandingPage = () => {
         <h2>All Recipes</h2>
         <div className="recipe-container">
           {filteredRecipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} dispatch={dispatch}  />
+            <RecipeCard key={recipe.id} recipe={recipe} dispatch={dispatch} />
           ))}
           <div
             className="add-new"
@@ -40,7 +41,7 @@ export const LandingPage = () => {
         </div>
       </div>
       {showAddNew && <AddNewRecipe setShowAddNew={setShowAddNew} />}
-      {editModal.show && <EditModal editModal={editModal}/>}
+      {editModal.show && <EditModal editModal={editModal} />}
     </div>
   );
 };

@@ -7,10 +7,11 @@ export const EditModal = ({ editModal }) => {
 
   const [image, setImage] = useState(null);
   const [postData, setPostData] = useState({
-    cuisineName: editModal.cuisineName,
-    cuisineType: editModal.cuisineType,
-    ingredients: editModal.ingredients,
-    instructions: editModal.instructions,
+    id:editModal.recipe.id,
+    cuisineName: editModal.recipe.cuisineName,
+    cuisineType: editModal.recipe.cuisineType,
+    ingredients: editModal.recipe.ingredients,
+    instructions: editModal.recipe.instructions,
   });
 
   const handleInputChange = (type, value) =>

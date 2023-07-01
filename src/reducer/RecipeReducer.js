@@ -35,7 +35,18 @@ export const RecipeReducer = (state, action) => {
         inputText: action.payload,
       };
     case "SET_RECIPIES": {
-      let finalRecipe = [...state.recipies, { id: uuid(), ...action.payload }];
+      let findRecipe = state.recipies.findIndex(
+        (recipe) => recipe.id.to === action.payload.id
+      );
+      let finalRecipe = [];
+      if (findRecipe === -1) {
+        finalRecipe = [...state.recipies, { id: uuid(), ...action.payload }];
+      } else {
+        finalRecipe = state.recipies.map((recipe) =>
+          recipe.id === action.payload.id ? action.payload : recipe
+        );
+      }
+
       localStorage.setItem("recipies", JSON.stringify(finalRecipe));
       return {
         ...state,
