@@ -16,13 +16,19 @@ export const handleImageUpload = async (image) => {
 
 export const getFilteredRecipes = (inputType, filterBy, recipies) => {
   if (inputType) {
-    recipies.filter((recipe) =>
-      filterBy === "name"
-        ? recipe.cuisineName.toLowerCase().includes(inputType.toLowerCase())
-        : filterBy === "ingredients"
-        ? recipe.ingredients.toLowerCase().includes(inputType.toLowerCase())
-        : recipe.instructions.toLowerCase().includes(inputType.toLowerCase())
-    );
+    if (filterBy === "name") {
+      return recipies.filter((recipe) =>
+        recipe.cuisineName.toLowerCase().includes(inputType.toLowerCase())
+      );
+    } else if (filterBy === "ingredients") {
+      return recipies.filter((recipe) =>
+        recipe.ingredients.toLowerCase().includes(inputType.toLowerCase())
+      );
+    } else if (filterBy === "cuisine") {
+      return recipies.filter((recipe) =>
+        recipe.cuisineType.toLowerCase().includes(inputType.toLowerCase())
+      );
+    }
   }
   return recipies;
 };
